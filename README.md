@@ -18,21 +18,17 @@
  * ` define best, avg , worst case bins ranges to classify frames on the basisi of dtw`
 
 # generate_pose_files.py
- This script converts **MediaPipe/OpenPose-style JSON keypoints** and **natural language sentences** into training files required by the pose generation model:
+This file generate training files required by the model:
 
 - `*.skels` — pose sequences  
 - `*.gloss` — gloss tokens  
 - `*.files` — video ids  
-
-It supports **full-body + hands + face** pose extraction and produces **frame-indexed 535D pose vectors**.
-
 ---
 
 ## What This Code Does
 
 ### 1. Converts MediaPipe keypoints into fixed-length pose vectors
 - Extracts 2D **body, hand, and face** keypoints from JSON files  
-- Reorders joints into a **stable OpenPose-like layout**  
 - Normalizes coordinates relative to the **neck joint**  
 - Outputs a **534D pose vector per frame**  
   (`178 joints × (x, y, z)`)  
@@ -49,8 +45,3 @@ It supports **full-body + hands + face** pose extraction and produces **frame-in
 
 ---
 
-### 3. Processes entire videos (frame sequences)
-- Reads all JSON frames from a video folder  
-- Extracts pose vectors for each frame  
-- Preserves **temporal ordering**  
-- Flattens the full sequence into **a single line per sample**
