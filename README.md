@@ -133,8 +133,6 @@ This code runs **validation inference** for the model.
 
 This code file implements the **full end2end training and evaluation workflow** for the model.
 
-## Core Responsibilities
-
 ### 1. Model Training
 - Loads configuration (`YAML`) and datasets
 - Builds the pose generation model
@@ -145,7 +143,7 @@ This code file implements the **full end2end training and evaluation workflow** 
   - Console
 
 
-### 2. Validation & Early Stopping
+### 2. Validation and Early Stopping
 - Periodically evaluates on the validation set
 - Computes:
   - **DTW-based evaluation score**
@@ -156,7 +154,7 @@ This code file implements the **full end2end training and evaluation workflow** 
   - Best checkpoint (`best.ckpt`)
   - Latest checkpoint (`every.ckpt`)
 
-### 3. Visualization & Video Generation
+### 3. Visualization and Video Generation
 - Produces **Predicted vs Ground Truth skeleton videos**
 - Applies **DTW-based temporal alignment** before visualization
 - Displays and saves:
@@ -165,7 +163,7 @@ This code file implements the **full end2end training and evaluation workflow** 
   - Face-only DTW
 
 
-### 4. Training Analytics
+### 4. Track Training progress
 - Tracks:
   - Training loss
   - Validation loss
@@ -184,7 +182,7 @@ This code file implements the **full end2end training and evaluation workflow** 
 - Optionally saves **DTW-aligned poses** for qualitative analysis. which creates best, avg , worst case buckts
 
 
-## Entry Points
+## Entry Points for testing and training
 
 - **`train(cfg_file)`**  
   Runs training + validation using the given config file.
