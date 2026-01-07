@@ -78,7 +78,6 @@ This code file handles **dataset loading, preprocessing, and batching**.
 
 ---
 
-
 # plot_video.py 
 
 This code file handles **2D skeleton visualization and DTW-based temporal alignment** for predicted and ground-truth pose sequences.
@@ -113,3 +112,20 @@ This code file handles **2D skeleton visualization and DTW-based temporal alignm
   - Hands only
   - Face only
 - Produces **time-aligned prediction sequences**
+
+
+---
+
+# predictions.py — Model Validation & DTW Evaluation
+
+This script runs **validation inference** for the model.
+
+## What It Does
+- Loads validation data in batches
+- Runs the trained model in **evaluation mode**
+- Generates predicted pose sequences
+- Computes **DTW scores** between predicted and ground-truth poses
+- Logs sample predictions for debugging
+
+
+
