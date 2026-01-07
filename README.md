@@ -127,5 +127,68 @@ This code runs **validation inference** for the model.
 - Computes **DTW scores** between predicted and ground-truth poses
 - Logs sample predictions for debugging
 
+---
 
+# Training.py
+
+This code file implements the **full end2end training and evaluation workflow** for the model.
+
+## Core Responsibilities
+
+### 1. Model Training
+- Loads configuration (`YAML`) and datasets
+- Builds the pose generation model
+- Runs training with:
+  - Gradient clipping
+  - Learning rate scheduling
+- Logs training progress to:
+  - Console
+
+
+### 2. Validation & Early Stopping
+- Periodically evaluates on the validation set
+- Computes:
+  - **DTW-based evaluation score**
+  - Validation loss
+- Tracks best checkpoint based on DTW
+- Supports early stopping when learning rate reaches minimum
+- Saves:
+  - Best checkpoint (`best.ckpt`)
+  - Latest checkpoint (`every.ckpt`)
+
+### 3. Visualization & Video Generation
+- Produces **Predicted vs Ground Truth skeleton videos**
+- Applies **DTW-based temporal alignment** before visualization
+- Displays and saves:
+  - Full-body DTW
+  - Hands-only DTW
+  - Face-only DTW
+
+
+### 4. Training Analytics
+- Tracks:
+  - Training loss
+  - Validation loss
+  - Validation DTW score
+- Automatically saves **training curves** as PNG
+- Optional training time logging
+
+
+### 5. Testing & Inference
+- Runs evaluation on `dev` and `test` sets
+- Computes final DTW scores
+- Saves:
+  - Skeleton predictions (`.skels`)
+  - DTW logs
+  - Test comparison videos
+- Optionally saves **DTW-aligned poses** for qualitative analysis. which creates best, avg , worst case buckts
+
+
+## Entry Points
+
+- **`train(cfg_file)`**  
+  Runs training + validation using the given config file.
+
+- **`test(cfg_file, ckpt)`**  
+  Runs evaluation and visualization on dev/test sets using a trained checkpoint.
 
