@@ -76,3 +76,40 @@ This code file handles **dataset loading, preprocessing, and batching**.
   - Minimum frequency thresholds
   - Predefined vocabulary files
 
+---
+
+
+# plot_video.py 
+
+This code file handles **2D skeleton visualization and DTW-based temporal alignment** for predicted and ground-truth pose sequences.
+
+
+### 1. Full Skeleton Visualization
+- Supports **178-joint skeletons** (body + hands + face)
+- Draws:
+  - Body joints and limbs
+  - Left/right hands with different colors
+  - Face landmarks (eyes, eyebrows, lips, oval)
+- Consistent **global centering and scaling** across all frames
+
+
+### 2. Video Generation
+- Generates:
+  - **Predicted-only videos**
+  - **Predicted vs Ground Truth side-by-side videos**
+- Output format: `1920×1080`
+
+### 3. Frame Export for GAN Training
+- Saves **skeleton-only frames** per sequence in pix2pix_GANs/data folder
+- Organized by sequence ID
+- Ready-to-use for **pix2pix models**
+
+
+
+### 4. DTW-Based Temporal Alignment
+- Applies **Dynamic Time Warping (DTW)** to align predictions with references
+- Computes DTW scores for:
+  - Full skeleton
+  - Hands only
+  - Face only
+- Produces **time-aligned prediction sequences**
