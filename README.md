@@ -116,9 +116,9 @@ This code file handles **2D skeleton visualization and DTW-based temporal alignm
 
 ---
 
-# predictions.py — Model Validation & DTW Evaluation
+# predictions.py
 
-This script runs **validation inference** for the model.
+This code runs **validation inference** for the model.
 
 ## What It Does
 - Loads validation data in batches
