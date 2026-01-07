@@ -43,4 +43,36 @@ This file generate training files required by the model:
 - Outputs **uppercase gloss tokens**  
 - Produces **one gloss sequence per video**
 
+---
+
+# data.py
+
+This code file handles **dataset loading, preprocessing, and batching**.
+
+
+## Purpose
+
+- Loads **source sequences** (gloss/text)
+- Loads **target pose sequences** (regression vectors)
+- Builds vocabularies
+- Creates training, validation, and test iterators
+
+## Key Responsibilities
+
+### 1. Dataset Loading (`load_data`)
+- Reads `*.src`, `*.trg`, and `*.files` from train/dev/test folders
+- Applies **sequence length filtering**
+- Supports **frame skipping** for long pose sequences
+- Builds source vocabulary
+- Returns:
+  - `train_data`, `dev_data`, `test_data`
+  - `src_vocab`, `trg_vocab`
+
+
+### 3. Vocabulary Management
+- Builds source vocabulary from training data
+- Supports:
+  - Vocabulary size limits
+  - Minimum frequency thresholds
+  - Predefined vocabulary files
 
