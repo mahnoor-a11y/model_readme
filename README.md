@@ -17,13 +17,14 @@
  **classification**
  * ` define best, avg , worst case bins ranges to classify frames on the basisi of dtw`
 
+---
+
 # generate_pose_files.py
 This file generate training files required by the model:
 
 - `*.skels` — pose sequences  
 - `*.gloss` — gloss tokens  
 - `*.files` — video ids  
----
 
 ## What This Code Does
 
@@ -34,7 +35,6 @@ This file generate training files required by the model:
   (`178 joints × (x, y, z)`)  
 - Appends the **frame index** as an additional value → **535D per frame**
 
----
 
 ### 2. Converts sentences into gloss format
 - Lowercases text and removes punctuation  
@@ -43,5 +43,4 @@ This file generate training files required by the model:
 - Outputs **uppercase gloss tokens**  
 - Produces **one gloss sequence per video**
 
----
 
